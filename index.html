@@ -3,58 +3,240 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <title>Hey Hey ✨</title>
-    <link rel="icon" type="img/jpg" href="https://c4.wallpaperflare.com/wallpaper/812/187/770/kimi-no-na-wa-tachibana-taki-miyamizu-mitsuha-anime-wallpaper-preview.jpg">
-
+    <title>Valentine's Day Gift - Love Messages & Surprises</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 <body>
-  
-<div class="rose">
-  <div class="petal"></div>
-  <div class="petal"></div>
-  <div class="petal"></div>
-  <div class="petal"></div>
-  <div class="petal"></div>
-  <div class="petal"></div>
-  <div class="petal"></div>
-  <div class="petal"></div>
-  <div class="petal"></div>
-  <div class="petal"></div>
-  <div class="petal"></div>
-  <div class="petal"></div>
-  <div class="petal"></div>
-  <div class="petal"></div>
-  <div class="petal"></div>
-  <div class="petal"></div>
-  <div class="petal"></div>
-  <div class="petal"></div>
-  <div class="petal"></div>
-  <div class="petal"></div>
-  <div class="petal"></div>
-  <div class="petal"></div>
-  <div class="petal"></div>
-  <div class="petal"></div>
-  <div class="petal"></div>
-  <div class="petal"></div>
-  <div class="petal"></div>
-  <div class="petal"></div>
-  <div class="petal"></div>
-  <div class="petal"></div>
-  <div class="text">
-      <span>Happy Rose Day ✨</span>
-  </div>
-</div>
-<span id="prompt">Touch the rose</span>
+    <!-- Day Selection Modal -->
+    <div id="daySelectionModal" class="day-selection-modal">
+        <div class="day-selection-content">
+            <h1>💝 Choose Your Special Day 💝</h1>
+            <p>Select which day you want to celebrate and customize your gift!</p>
+            <div class="days-grid">
+                <div class="day-card" onclick="selectDay('rose-day', '🌹 Rose Day', '#E91E63')">
+                    <div class="day-icon">🌹</div>
+                    <div class="day-name">Rose Day</div>
+                    <div class="day-date">Feb 7</div>
+                </div>
+                <div class="day-card" onclick="selectDay('propose-day', '💍 Propose Day', '#FF1744')">
+                    <div class="day-icon">💍</div>
+                    <div class="day-name">Propose Day</div>
+                    <div class="day-date">Feb 8</div>
+                </div>
+                <div class="day-card" onclick="selectDay('chocolate-day', '🍫 Chocolate Day', '#8B4513')">
+                    <div class="day-icon">🍫</div>
+                    <div class="day-name">Chocolate Day</div>
+                    <div class="day-date">Feb 9</div>
+                </div>
+                <div class="day-card" onclick="selectDay('teddy-day', '🧸 Teddy Day', '#FF69B4')">
+                    <div class="day-icon">🧸</div>
+                    <div class="day-name">Teddy Day</div>
+                    <div class="day-date">Feb 10</div>
+                </div>
+                <div class="day-card" onclick="selectDay('promise-day', '🤝 Promise Day', '#9C27B0')">
+                    <div class="day-icon">🤝</div>
+                    <div class="day-name">Promise Day</div>
+                    <div class="day-date">Feb 11</div>
+                </div>
+                <div class="day-card" onclick="selectDay('hug-day', '🤗 Hug Day', '#00BCD4')">
+                    <div class="day-icon">🤗</div>
+                    <div class="day-name">Hug Day</div>
+                    <div class="day-date">Feb 12</div>
+                </div>
+                <div class="day-card" onclick="selectDay('kiss-day', '💋 Kiss Day', '#FF6EC7')">
+                    <div class="day-icon">💋</div>
+                    <div class="day-name">Kiss Day</div>
+                    <div class="day-date">Feb 13</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<div style="display: none;">
-  <audio autoplay="" loop="" controls="">
-    <source src="song.mp3" type="audio/mp3">
-  </audio>
-</div>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="logo">💝 Valentine's Gift</div>
+            <div class="nav-day-info" id="navDayInfo"></div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#messages">Messages</a></li>
+                <li><a href="#games">Games</a></li>
+                <li><a href="#animations">Animations</a></li>
+                <li><a href="#qrcode">QR Code</a></li>
+                <li><a href="#" onclick="resetDay()">Change Day</a></li>
+            </ul>
+        </nav>
 
-<h1>By Your one and only Mad head 😌✨</h1>
-<p><a href="https://wa.me/918767506459?text=awesome one ✨" target="_blank">For feedback</a></p>
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <h1>💕 Valentine's Day Gift Generator 💕</h1>
+                <p>Create beautiful love messages, share animations, and send via QR code!</p>
+                <button class="btn btn-primary" onclick="scrollToSection('#messages')">Get Started</button>
+            </div>
+        </section>
+
+        <!-- Messages Section -->
+        <section id="messages" class="section">
+            <h2>💌 Love Messages</h2>
+            
+            <!-- Add New Message Form -->
+            <div class="form-container">
+                <h3>Add a New Message</h3>
+                <div class="form-group">
+                    <label>From (Sender):</label>
+                    <input type="text" id="senderInput" placeholder="Your name" class="form-input">
+                </div>
+                <div class="form-group">
+                    <label>To (Recipient):</label>
+                    <input type="text" id="recipientInput" placeholder="Their name" class="form-input">
+                </div>
+                <div class="form-group">
+                    <label>Message:</label>
+                    <textarea id="messageInput" placeholder="Write your love message here..." class="form-textarea"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Upload Image:</label>
+                    <input type="file" id="imageInput" accept="image/*" class="form-input">
+                    <div id="imagePreview" class="image-preview"></div>
+                </div>
+                <button class="btn btn-success" onclick="addMessage()">Add Message</button>
+            </div>
+
+            <!-- Messages Display -->
+            <div class="messages-container" id="messagesContainer">
+                <!-- Messages will be added here dynamically -->
+            </div>
+        </section>
+
+        <!-- Games Section -->
+        <section id="games" class="section">
+            <h2>🎮 Couple Games</h2>
+            
+            <div class="games-menu" id="gamesMenu">
+                <h3>Choose a Game 🎯</h3>
+                <div class="games-buttons">
+                    <button class="btn btn-primary" onclick="startMatchGame()">🎲 Match the Boxes Game</button>
+                    <button class="btn btn-primary" onclick="startCoupleGame()">👫 Couple Challenge</button>
+                    <button class="btn btn-primary" onclick="startMemoryGame()">🧠 Memory Matching</button>
+                </div>
+            </div>
+
+            <!-- Match Game Section -->
+            <div id="matchGameSection" class="game-section" style="display:none;">
+                <h3>Match the <span id="matchItemName"></span> 🎪</h3>
+                <div class="match-game-container">
+                    <div id="matchGameBoard" class="match-game-board">
+                        <!-- Game tiles will be generated here -->
+                    </div>
+                    <div class="match-game-info">
+                        <p>Score: <span id="matchScore">0</span></p>
+                        <button class="btn btn-secondary" onclick="resetMatchGame()">Reset Game</button>
+                        <button class="btn btn-secondary" onclick="backToGames()">Back to Menu</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Couple Game Section -->
+            <div id="coupleGameSection" class="game-section" style="display:none;">
+                <h3>Couple Challenge 💑</h3>
+                <div class="couple-game-container">
+                    <div id="coupleGameContent" class="couple-game-content">
+                        <!-- Questions will appear here -->
+                    </div>
+                    <div class="couple-game-info">
+                        <p>Question: <span id="questionNumber">1</span>/10</p>
+                        <button class="btn btn-secondary" onclick="backToGames()">Back to Menu</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Memory Game Section -->
+            <div id="memoryGameSection" class="game-section" style="display:none;">
+                <h3>Memory Matching Game 🧠</h3>
+                <div class="memory-game-container">
+                    <div id="memoryGameBoard" class="memory-game-board">
+                        <!-- Memory cards will be generated here -->
+                    </div>
+                    <div class="memory-game-info">
+                        <p>Moves: <span id="memoryMoves">0</span></p>
+                        <p>Matches: <span id="memoryMatches">0</span>/8</p>
+                        <button class="btn btn-secondary" onclick="resetMemoryGame()">Reset Game</button>
+                        <button class="btn btn-secondary" onclick="backToGames()">Back to Menu</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Animations Section -->
+        <section id="animations" class="section">
+            <h2>✨ Animations</h2>
+            
+            <!-- Add New Animation Form -->
+            <div class="form-container">
+                <h3>Add a New Animation</h3>
+                <div class="form-group">
+                    <label>Animation Name:</label>
+                    <input type="text" id="animNameInput" placeholder="e.g., Floating Hearts" class="form-input">
+                </div>
+                <div class="form-group">
+                    <label>Description:</label>
+                    <textarea id="animDescInput" placeholder="Describe the animation" class="form-textarea"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Animation Type:</label>
+                    <select id="animTypeInput" class="form-input">
+                        <option value="fade">Fade</option>
+                        <option value="slide">Slide</option>
+                        <option value="bounce">Bounce</option>
+                        <option value="spin">Spin</option>
+                        <option value="pulse">Pulse</option>
+                    </select>
+                </div>
+                <button class="btn btn-success" onclick="addAnimation()">Add Animation</button>
+            </div>
+
+            <!-- Animations Display -->
+            <div class="animations-container" id="animationsContainer">
+                <!-- Animations will be added here dynamically -->
+            </div>
+        </section>
+
+        <!-- QR Code Section -->
+        <section id="qrcode" class="section">
+            <h2>📱 Share Your Gift</h2>
+            <div class="qr-container">
+                <div class="qr-content">
+                    <h3>Scan to View Your Valentine's Gift</h3>
+                    <button class="btn btn-primary" onclick="generateQRCode()">Generate QR Code</button>
+                    <div id="qrCodeDiv" class="qr-code-display"></div>
+                    <button class="btn btn-secondary" id="downloadBtn" style="display:none;" onclick="downloadQRCode()">Download QR Code</button>
+                    <p class="qr-info">Share this QR code with your special someone!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Preview Section -->
+        <section id="preview" class="section">
+            <h2>👀 Preview</h2>
+            <button class="btn btn-primary" onclick="togglePreview()">View Full Preview</button>
+            <div id="previewContent" class="preview-content" style="display:none;">
+                <!-- Preview content will be shown here -->
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2026 Valentine's Day Gift Generator. Made with ❤️</p>
+        </footer>
+    </div>
+
+    <!-- Hidden URL display for QR code -->
+    <div id="urlDisplay" style="display:none;">
+        <textarea id="urlText" readonly style="width:100%; height:100px;"></textarea>
+    </div>
+
+    <script src="script.js"></script>
 </body>
-
 </html>

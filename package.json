@@ -1,0 +1,27 @@
+{
+  "name": "valentines-day-gift-generator",
+  "version": "1.0.0",
+  "description": "A beautiful interactive website for creating customized Valentine's Day gifts with games, messages, animations, and QR code sharing",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server -p 8000 -c-1",
+    "serve": "npx http-server -p 8080"
+  },
+  "keywords": [
+    "valentine",
+    "valentine's day",
+    "love",
+    "gifts",
+    "games",
+    "qr-code",
+    "couple",
+    "romantic",
+    "interactive"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/Roseday.git"
+  }
+}
